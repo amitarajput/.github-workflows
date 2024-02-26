@@ -32,8 +32,10 @@ jobs:
       with:
         languages: ${{ matrix.language }}
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v3
+    - name: Build with Ant
+        run:|
+          ant clean
+          ant compile
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
