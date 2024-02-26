@@ -25,9 +25,14 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2.5.0
+      uses: actions/checkout@v2
       with:
         submodules: recursive # Add this line if you have submodules
+
+    - name: Use Node.js 16
+      uses: actions/setup-node@v4
+      with:
+        node-version: 16
 
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v3
