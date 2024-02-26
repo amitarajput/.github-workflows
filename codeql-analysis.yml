@@ -27,3 +27,9 @@ jobs:
 
       - name: Analyze
         uses: github/codeql-action/analyze@v1
+
+      - name: Create CodeQL Database
+        run: codeql database create --language=${{ matrix.language }}
+
+      - name: Run CodeQL Queries
+        run: codeql query run --language=${{ matrix.language }} -o results.sarif
