@@ -33,9 +33,9 @@ jobs:
         languages: ${{ matrix.language }}
 
     - name: Build with Ant
-        run:|
-          ant clean
-          ant compile
+      run: |
+        ant clean
+        ant compile
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
