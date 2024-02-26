@@ -1,9 +1,8 @@
-name: CodeQL Analysis
+name: "CodeQL Analysis"
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   analyze:
@@ -11,25 +10,21 @@ jobs:
 
     strategy:
       matrix:
-        language: [java]
+        language: [ 'java' ]
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Initialize CodeQL
-        uses: github/codeql-action/init@v1
+        uses: github/codeql-action/init@v2
         with:
           languages: ${{ matrix.language }}
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v1
+        uses: github/codeql-action/autobuild@v2
 
-      - name: Analyze
-        uses: github/codeql-action/analyze@v1
-
-      - name: Create CodeQL Database
-        run: codeql database create --language=${{ matrix.language }}
-
-      - name: Run CodeQL Queries
-        run: codeql query run --language=${{ matrix.language }} -o results.sarif
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        with:
+          category: "java"
