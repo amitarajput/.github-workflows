@@ -21,8 +21,10 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Autobuild
-        uses: github/codeql-action/autobuild@v2
+      - name: Build with Maven
+        run: |
+          # Assuming your project has a pom.xml file
+          mvn clean install
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
