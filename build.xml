@@ -21,6 +21,10 @@
         </javac>
     </target>
 
+    <target name="clean">
+        <delete dir="${build.dir}"/>
+    </target>
+
     <!-- Add more targets as needed for your project (e.g., jar, clean, etc.) -->
 
 </project>
