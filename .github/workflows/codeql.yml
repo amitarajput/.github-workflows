@@ -21,10 +21,10 @@ jobs:
         with:
           languages: ${{ matrix.language }}
 
-      - name: Build with Maven
+      - name: Build with Ant
         run: |
-          # Assuming your project has a pom.xml file
-          mvn clean install
+          ant clean
+          ant compile
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
